@@ -37,6 +37,10 @@
   button,
   input[type=button] {
     &#{ns(tag)} {
+      &:disabled {
+        @include color.background(disabled grey, (legacy: $legacy));
+      }
+
       @include pressed-selector(true) {
         &:not(:disabled) {
           @include color.transparent-background((legacy:$legacy));
@@ -49,7 +53,7 @@
         }
 
         @include disabled.selector {
-          @include color.transparent-background((legacy:$legacy));
+          @include color.transparent-background((legacy:$legacy, hover: true));
           @include tag-punched-background(background disabled grey, md, $legacy, false);
           @include after {
             @include color.text(disabled grey, (legacy: $legacy));
@@ -66,10 +70,6 @@
       }
 
       @include disabled.selector((), (legacy: $legacy, text: true, background: true));
-
-      &:disabled:hover {
-        @include color.background(background disabled grey, (legacy: $legacy));
-      }
     }
   }
 
