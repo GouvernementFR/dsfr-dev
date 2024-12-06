@@ -9,5 +9,6 @@
 @include path.to-dist(1);
 @include media-query.order;
 
+@import 'rtl/main';
 @import 'colors/main';
 @import 'icons/main';
