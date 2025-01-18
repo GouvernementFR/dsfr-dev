@@ -5,10 +5,15 @@ const { Changelog } = require('./classes/changelog/changelog');
 const yargs = require('yargs');
 const build = require('./build/build');
 const buildRouting = require('./generate/routing');
-const { deployFavicons, deployFiles, deployRobots, deployStorybook } = require('./build/copy');
+const { deployFavicons, deployFiles, deployRobots, deployStorybook,
+  deployDocs
+} = require('./build/copy');
 const { test } = require('./test/test');
 const standalone = require('./build/standalone');
 const { generateNewPictogram } = require('./generate/pictogram');
+const { spawn} = require('child_process');
+const log = require('./utilities/log');
+const { updateChouquette } = require('./utilities/update')
 
 /**
  * Build
@@ -129,7 +134,9 @@ const releaseHandler = async (argv) => {
     legacy: true,
     sourcemap: true,
     markdowns: true,
-    locale: argv.locale
+    locale: argv.locale,
+    storybook: true,
+    docs: true
   });
 };
 
@@ -150,11 +157,14 @@ const deployBuilder = (yargs) => {
 };
 
 const deployHandler = async (argv) => {
+  log.section('DEPLOY');
+  await updateChouquette();
   await build({
     styles: true,
     scripts: true,
     examples: true,
     storybook: true,
+    docs: true,
     clean: true,
     minify: true,
     legacy: true,
@@ -173,6 +183,7 @@ const deployHandler = async (argv) => {
   deployFiles();
   deployRobots();
   deployStorybook();
+  deployDocs();
 };
 
 /**

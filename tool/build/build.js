@@ -14,6 +14,7 @@ const clean = require('../utilities/clean');
 const { I18n } = require('../classes/i18n/i18n');
 const { Config } = require('../classes/config/config');
 const fs = require('fs');
+const { execSync } = require('child_process');
 
 const build = async (settings) => {
   log(36, `build ${global.config.namespace} - version ${global.version}`);
@@ -82,6 +83,11 @@ const build = async (settings) => {
   if (settings.storybook) {
     log.section('storybook', true);
     await buildStorybook();
+  }
+
+  if (settings.docs) {
+    log.section('docs', true);
+    await execSync('yarn dsfr configure && yarn dsfr interpret && yarn dsfr publish');
   }
 
   if (settings.markdowns) {

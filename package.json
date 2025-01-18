@@ -1,6 +1,6 @@
 {
   "name": "@gouvfr/dsfr",
-  "version": "1.13.0",
+  "version": "1.14.0",
   "description": "Système de Design de l'Etat - DSFR",
   "repository": "git@github.com:GouvernementFR/dsfr.git",
   "author": "Service d'Information du Gouvernement <maxime.beaugrand@pm.gouv.fr>",
@@ -22,7 +22,8 @@
     "standalone": "node tool/tool.js standalone",
     "changelog": "node tool/tool.js changelog",
     "serve": "browser-sync start --server --port 8080 --startPath example/",
-    "pictogram-converter": "node tool/tool.js pictogram-converter"
+    "pictogram-converter": "node tool/tool.js pictogram-converter",
+    "chouquette": "yarn upgrade @gouvfr/dsfr-cli @gouvfr/dsfr-forge @gouvfr/dsfr-compiler @gouvfr/dsfr-doc-publisher @gouvfr/dsfr-doc-static"
   },
   "files": [
     "/dist",
@@ -40,6 +41,11 @@
   "devDependencies": {
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
+    "@gouvfr/dsfr-cli": "git+https://github.com/GouvernementFR/dsfr-cli.git#pck/doc/@cli",
+    "@gouvfr/dsfr-compiler": "git+https://github.com/GouvernementFR/dsfr-cli.git#pck/doc/@compiler",
+    "@gouvfr/dsfr-doc-publisher": "git+https://github.com/GouvernementFR/dsfr-cli.git#pck/doc/@doc-publisher",
+    "@gouvfr/dsfr-doc-static": "git+https://github.com/GouvernementFR/dsfr-cli.git#pck/doc/@doc-static",
+    "@gouvfr/dsfr-forge": "git+https://github.com/GouvernementFR/dsfr-cli.git#pck/doc/@forge",
     "@rollup/plugin-buble": "^0.21.3",
     "@rollup/plugin-virtual": "^2.1.0",
     "browser-sync": ">=2.27.10",
@@ -84,6 +90,13 @@
     "subset-font": "^1.6.1",
     "svgo": "^2.8.0",
     "yargs": "^17.7.1"
+  },
+  "resolutions": {
+    "@gouvfr/dsfr-cli": "git+https://github.com/GouvernementFR/dsfr-cli.git#pck/doc/@cli",
+    "@gouvfr/dsfr-forge": "git+https://github.com/GouvernementFR/dsfr-cli.git#pck/doc/@forge",
+    "@gouvfr/dsfr-compiler": "git+https://github.com/GouvernementFR/dsfr-cli.git#pck/doc/@compiler",
+    "@gouvfr/dsfr-doc-publisher": "git+https://github.com/GouvernementFR/dsfr-cli.git#pck/doc/@doc-publisher",
+    "@gouvfr/dsfr-doc-static": "git+https://github.com/GouvernementFR/dsfr-cli.git#pck/doc/@doc-static"
   },
   "husky": {
     "hooks": {

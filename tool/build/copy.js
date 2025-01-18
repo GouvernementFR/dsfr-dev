@@ -78,6 +78,10 @@ const deployStorybook = () => {
   copyDir(root('storybook'), root('public/storybook'));
 };
 
+const deployDocs = () => {
+  copyDir(root('.doc'), root('public'));
+};
+
 const deployFiles = () => {
   copyDir(root('dist'), root('public/dist'));
   copyDir(root('example'), root('public/example'));
@@ -89,4 +93,4 @@ const deployRobots = () => {
   createFile(root('public/robots.txt'), content);
 };
 
-module.exports = { copyFiles, copyImages, copyAssets, copyIcons, deployFavicons, deployFiles, deployRobots, deployStorybook };
+module.exports = { copyFiles, copyImages, copyAssets, copyIcons, deployFavicons, deployFiles, deployRobots, deployStorybook, deployDocs };

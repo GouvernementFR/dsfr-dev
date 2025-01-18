@@ -6,6 +6,8 @@ public/
 /example/
 /standalone/
 /storybook/
+/.dsfr/
+/.doc/
 
 dsfr-sb/*storybook.log
 dsfr-sb/storybook-static/
